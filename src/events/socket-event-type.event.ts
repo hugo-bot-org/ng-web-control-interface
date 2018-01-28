@@ -3,6 +3,11 @@ export class SocketEventType {
         successfullyConnected: 'client.successfully-connected'
     };
 
+    public static cam = {
+        takePic: 'cam.takepic',
+        getPic: 'cam.getpic',
+    }
+
     public static lights = {
         ON: 'lights.on',
         OFF: 'lights.off',

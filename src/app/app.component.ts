@@ -2,6 +2,7 @@ import * as io from 'socket.io-client';
 import { Component, HostListener } from '@angular/core';
 import { BaseRoom } from '../abstracts/BaseRoom.abstract';
 import { SocketEventType } from '../events/socket-event-type.event';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
@@ -9,6 +10,8 @@ import { SocketEventType } from '../events/socket-event-type.event';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent extends BaseRoom {
+    public imageSrc = '';
+
     protected socket: SocketIOClient.Socket;
 
     private lightsOn = false;
@@ -31,7 +34,7 @@ export class AppComponent extends BaseRoom {
         }
     };
 
-    public constructor() {
+    public constructor(private http: HttpClient) {
         super();
         this.connectToSocket();
     }
@@ -121,8 +124,19 @@ export class AppComponent extends BaseRoom {
         this.lightsOn = false;
     }
 
+    public takePic() {
+        this.http.get('http://192.168.1.13:4000/takePic ')
+            .subscribe((res: any) => {
+                console.log('res arrived for takepic');
+                console.log(res);
+                const img = document.getElementById('img') as HTMLImageElement;
+                img.src = 'data:image/png;base64, ' + res.img_data;
+            });
+    }
+
     protected onConnectionEstablished(): void {
         console.log('Connected!');
+        this.socket.emit(SocketEventType.motors.STOP);
     }
 
 }

@@ -3,6 +3,7 @@ mat-toolbar {
 }
 
 .view {
+    padding: 10px;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -15,5 +16,44 @@ mat-toolbar {
         flex-grow: 1;
         width: 100%;
         height: 100%;
+
+        .scheme{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            .scheme-btn{
+                width: 70px;
+                height: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                
+                .graphic {
+                    width: 100%;
+                    border-radius: 5px;
+                    text-align: center;
+                    height: 70px;
+                    font-weight: bold;
+                    line-height: 70px;
+                    box-shadow: 0px 3px 10px -3px #000;
+                    transition: all 120ms ease-in-out;
+                }
+                
+                .scheme-label{
+                    text-align: center;
+                    border-radius: 5px;
+                    color: #333;
+                }
+
+                &.pressed{
+                    .graphic{
+                        background-color: #eee;
+                        color: rgb(50, 75, 214);
+                        box-shadow: 0px 3px 10px -3px transparent;
+                    }
+                }
+            }
+        }
     }
 }

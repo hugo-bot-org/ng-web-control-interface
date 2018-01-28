@@ -1,7 +1,32 @@
 <mat-toolbar>HUGO Web control interface</mat-toolbar>
 <div class="view">
-    <div class="web-view"></div>
+    <div class="web-view">
+        <img id="img">
+    </div>
     <div class="controls">
+        <div class="scheme">
+            <div class="scheme-btn" [ngClass]="{'pressed': arrows.up.isPressed}">
+                <div class="graphic">UP</div>
+                <div class="scheme-label">Forward</div>
+            </div>
+
+            <div class="scheme-btn" [ngClass]="{'pressed': arrows.down.isPressed}">
+                <div class="graphic">DOWN</div>
+                <div class="scheme-label">Backward</div>
+            </div>
+
+            <div class="scheme-btn" [ngClass]="{'pressed': arrows.left.isPressed}">
+                <div class="graphic">LEFT</div>
+                <div class="scheme-label">Left</div>
+            </div>
+
+            <div class="scheme-btn" [ngClass]="{'pressed': arrows.right.isPressed}">
+                <div class="graphic">RIGHT</div>
+                <div class="scheme-label">Right</div>
+            </div>
+        </div>
+        <hr>
         <button (click)="toggleLights()" mat-raised-button color="primary">Toggle lights</button>
+        <button (click)="takePic()" mat-raised-button color="primary">Take a picture</button>
     </div>
 </div>
