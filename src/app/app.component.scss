@@ -1,0 +1,19 @@
+mat-toolbar {
+    font-family: monospace;
+}
+
+.view {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    .web-view{
+        flex-grow: 1;
+        width: 100%;
+        height: 100%;
+    }
+    .controls{
+        flex-grow: 1;
+        width: 100%;
+        height: 100%;
+    }
+}
